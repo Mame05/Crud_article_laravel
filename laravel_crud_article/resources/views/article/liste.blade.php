@@ -26,25 +26,29 @@
                         <tr>
                             <th>#</th>
                             <th>Nom</th>
+                            <th>Description</th>
                             <th>Date de la création</th>
                             <th>À la une ou pas</th>
+                            <th>L'url de l'image</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                       
+                        @foreach($articles as $article)
                         <tr>
-                            <td>N°1</td>
-                            <td>article1</td>
-                            <td>sa date de création</td>
-                            <td>a la une</td>
+                            <td>{{ $article->id }}</td>
+                            <td>{{ $article->nom }}</td>
+                            <td>{{ $article->description}}</td>
+                            <td>{{ $article->date_creation}}</td>
+                            <td>{{ $article->est_a_la_une }}</td>
+                            <td>{{ $article->image }}</td>
                             
                             <td>
                                 <a href="/modifier" class="btn btn-info">Modifier</a>
                                 <a href="/supprimer" class="btn btn-danger">Supprimer</a>
                             </td>
                         </tr>
-                    
+                        @endforeach
                     </tbody>
                 </table> 
             </div>
