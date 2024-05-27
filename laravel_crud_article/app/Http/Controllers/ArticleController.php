@@ -35,4 +35,28 @@ class ArticleController extends Controller
     
         return redirect('/article')->with('status', "L'article a bien été ajouté avec succés.");
        }
+       public function modifier_article($id){
+        $articles = Article::find($id);
+        return view('article/modifier', compact('articles'));
+       }
+    
+       public function modifier_article_traitement(Request $request){
+        /*dd($request->all());*/
+        $request->validate(["
+        'nom' => 'required'
+        'description' => 'required'
+        'date_creation' => 'required'
+        'est_a_la_une'=> 'required'
+        'image' => 'required'
+        "]);
+        $article=  Article::find($request->id);
+        $article->nom = $request->nom;
+        $article->description = $request->description;
+        $article->date_creation = $request->date_creation;
+        $article->est_a_la_une = $request->est_a_la_une;
+        $article->image = $request->image;
+        $article->update();
+        
+        return redirect('article')->with('status', "L'article a bien été modifié avec succés.");
+       }
 }
