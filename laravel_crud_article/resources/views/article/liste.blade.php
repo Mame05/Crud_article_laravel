@@ -44,7 +44,7 @@
                             <td>{{ $article->image }}</td>
                             
                             <td>
-                                <a href="/modifier" class="btn btn-info">Modifier</a>
+                                <a href="/modifier-article/{{ $article->id }}" class="btn btn-info">Modifier</a>
                                 <a href="/supprimer" class="btn btn-danger">Supprimer</a>
                             </td>
                         </tr>
