@@ -38,17 +38,22 @@
                       <div class="form-group">
                         <label for="date_creation">Date de la création</label>
                         <input type="date" class="form-control" id="date_creation" name="date_creation" >
-                        <label for="est_a_la_une">Est il à la une?</label>
-                        <input type="text" class="form-control" id="est_a_la_une" name="est_a_la_une" >
+                        <label for="est_a_la_une">Est il à la une? </label>
+                            <div>
+                                <label>
+                                    <input type="checkbox" name="est_a_la_une" value="1"> Oui</label>
+                                <label>
+                                    <input type="checkbox" name="est_a_la_une" value="0"> Non </label>
+                            </div>
                         <label for="image">Image illustratif</label>
                         <input type="text" class="form-control" id="image" name="image" >
                       </div>
                     <br>
-                    <button type="submit" class="btn btn-primary">AJOUTER UN ARTICLE</button>
+                    <button type="submit" class="btn btn-primary btn sm">AJOUTER UN ARTICLE</button>
 
                     <br> <br>
 
-                    <a href="/article" class="btn btn-danger">Revenir à la liste des articles</a>
+                    <a href="/article" class="btn btn-outline-primary btn sm">Revenir à la liste des articles</a>
                   </form>
                 
             </div>

@@ -24,3 +24,7 @@ Route::get('/detail-article/{id}', [ArticleController::class, 'detail_article'])
 Route::get('/article', [ArticleController::class, 'liste_article']);
 Route::get('/ajouter', [ArticleController::class, 'ajouter_article']);
 Route::post('/ajouter/traitement', [ArticleController::class, 'ajouter_article_traitement']);
+
+
+
+

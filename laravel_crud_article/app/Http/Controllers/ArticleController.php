@@ -17,12 +17,12 @@ class ArticleController extends Controller
        }
     
        public function ajouter_article_traitement(Request $request){
-        /*dd($request->all());*/
+        dd($request->all());
         $request->validate(["
             'nom' => 'required'
             'description' => 'required'
             'date_creation' => 'required'
-            'est_a_la_une'=> 'required'
+            'est_a_la_une'=> 'required|boolean'
             'image' => 'required'
         "]);
     
@@ -30,8 +30,8 @@ class ArticleController extends Controller
         $article->nom = $request->nom;
         $article->description = $request->description;
         $article->date_creation = $request->date_creation;
-        $article->est_a_la_une = $request->est_a_la_une;
-        $article->image = $request->image;
+        $article->est_a_la_une = $request->input('est_a_la_une')[0] ?? false; /*Cela permettra de récupérer la première valeur du tableau est_a_la_une. Si la case "oui" est cochée, elle aura la valeur "1" et sera donc considérée comme vraie. Si la case "non" est cochée, elle aura la valeur "0" et sera considérée comme fausse. Si aucune des cases n'est cochée, la valeur par défaut sera fausse.*/
+        $article->image = $request->input('image');/*Assure l'affichage de l'image via l'url*/
         $article->save();
     
         return redirect('/article')->with('status', "L'article a bien été ajouté avec succés.");
@@ -47,15 +47,15 @@ class ArticleController extends Controller
         'nom' => 'required'
         'description' => 'required'
         'date_creation' => 'required'
-        'est_a_la_une'=> 'required'
+        'est_a_la_une'=> 'required|boolean'
         'image' => 'required'
         "]);
         $article=  Article::find($request->id);
         $article->nom = $request->nom;
         $article->description = $request->description;
         $article->date_creation = $request->date_creation;
-        $article->est_a_la_une = $request->est_a_la_une;
-        $article->image = $request->image;
+        $article->est_a_la_une = $request->input('est_a_la_une')[0] ?? false; 
+        $article->image = $request->input('image');
         $article->update();
         
         return redirect('article')->with('status', "L'article a bien été modifié avec succés.");
@@ -70,5 +70,7 @@ class ArticleController extends Controller
         $article = DB::table('articles')->where('id', $id)->get();
         $article = Article::findOrFail($id);
         return view('article/detail',['article'=>$article]);
-    }
+    } 
+      
 }
+

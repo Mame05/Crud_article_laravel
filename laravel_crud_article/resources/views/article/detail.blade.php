@@ -10,15 +10,17 @@
     <h1>Détails de l'article N°{{$article->id}}</h1>
     <div class="row">
         <div class="col-sm-3">
-            <div class="card" style="width: 20rem;height:500px">
-            <img src="https://www.thesaurus.com/e/wp-content/uploads/2021/11/20211104_articles_1000x700.png" class="card-img-top" alt="...">
+            <div class="card" style="width: 20rem;height:1000px">
+            <img src="{{ $article->image }}" class="card-img-top" alt="..." width="20rem" height="200px">
             <div class="card-body">
               <h5 class="card-title"><strong>Nom: {{ $article->nom }}</h5>
               <p> <strong>Description : {{ $article->description}}</strong> </p>
               <p><strong> Date de la création : {{$article->date_creation}}</strong></p>
-              <a href="/modifier-article/{{ $article->id }}" class="btn btn-info">Modifier</a>
-              <a href="/supprimer-article/{{ $article->id }}" class="btn btn-danger">Supprimer</a>
-              <a href="/article" class="btn btn-primary">Revenir à la liste des articles</a>
+              <p class="d-inline-flex gap-3">
+                <a href="/modifier-article/{{ $article->id }}" class="btn btn-outline-primary btn-sm">Modifier</a>
+                <a href="/supprimer-article/{{ $article->id }}" class="btn btn-outline-danger btn-sm">Supprimer</a>
+              </p>
+              <a href="/article" class="btn btn-outline-success btn-sm">Revenir à la liste des articles</a>
             </div>
             </div>
         </div>

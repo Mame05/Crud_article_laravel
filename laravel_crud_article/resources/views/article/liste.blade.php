@@ -26,12 +26,25 @@
                 @foreach($articles as $article)
                 <div class="col-sm-3">
                     <div class="card" style="width: 20rem;height:400px">
-                    <img src="https://www.thesaurus.com/e/wp-content/uploads/2021/11/20211104_articles_1000x700.png" class="card-img-top" alt="...">
+                    <img src="{{ $article->image }}" class="card-img-top" alt="..." width="20rem" height="200px"> <!--permet losqu'on met l'url de l'image on le verra-->
                     <div class="card-body">
-                      <h5 class="card-title">Nom:{{ $article->nom }}</h5>
-                      <a href="/detail-article/{{ $article->id }}" class="btn btn-primary">Voir détails</a>
-                      <a href="/modifier-article/{{ $article->id }}" class="btn btn-info">Modifier</a>
-                    <a href="/supprimer-article/{{ $article->id }}" class="btn btn-danger">Supprimer</a>
+                      <h5 class="card-title">{{ $article->nom }}</h5>
+                      <!--<div class="form-group">-->
+                        <p class="d-inline-flex">
+                            <div>
+                                @if($article->est_a_la_une)
+                                    <button type="button" class="btn btn-info btn-sm">À la une</button>
+                                @else
+                                    <button type="button" class="btn btn-warning btn-sm">Non à la une</button>
+                                @endif
+                            </div>
+                        </p>
+                     <!-- </div>-->
+                      <p class="d-inline-flex gap-3">  <!--C'est pour mettre des espacements entre les button-->
+                      <a href="/detail-article/{{ $article->id }}"  class="btn btn-outline-success btn-sm">Voir détails</a>
+                      <a href="/modifier-article/{{ $article->id }}"  class="btn btn-outline-primary btn-sm">Modifier</a>
+                      <a href="/supprimer-article/{{ $article->id }}"  class="btn btn-outline-danger btn-sm">Supprimer</a>
+                      </p>
                     </div>
                     </div>
                 </div>
