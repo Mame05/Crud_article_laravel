@@ -34,9 +34,12 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $ide = 1;
+                        @endphp
                         @foreach($articles as $article)
                         <tr>
-                            <td>{{ $article->id }}</td>
+                            <td>{{ $ide }}</td>
                             <td>{{ $article->nom }}</td>
                             <td>{{ $article->description}}</td>
                             <td>{{ $article->date_creation}}</td>
@@ -45,9 +48,12 @@
                             
                             <td>
                                 <a href="/modifier-article/{{ $article->id }}" class="btn btn-info">Modifier</a>
-                                <a href="/supprimer" class="btn btn-danger">Supprimer</a>
+                                <a href="/supprimer-article/{{ $article->id }}" class="btn btn-danger">Supprimer</a>
                             </td>
                         </tr>
+                        @php
+                            $ide += 1;
+                        @endphp
                         @endforeach
                     </tbody>
                 </table> 
