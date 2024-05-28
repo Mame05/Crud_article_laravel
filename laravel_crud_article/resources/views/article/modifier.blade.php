@@ -25,10 +25,8 @@
                 </ul>
 
                 <form action="/modifier/traitement" method="POST" class="form-group">
-
-                    @csrf
-
-                    <input type="text" name="id" style="display: none;" value="{{$articles->id}}">
+                @csrf
+                <input type="text" name="id" style="display: none;" value="{{$articles->id}}">
                     <div class="form-group">
                       <label for="nom">Nom</label>
                       <input type="text" class="form-control" id="nom" name="nom" value="{{$articles->nom}}">
@@ -51,12 +49,9 @@
                       </div>
                     <br>
                     <button type="submit" class="btn btn-primary">MODIFIER UN ARTICLE</button>
-
                     <br> <br>
-
                     <a href="/article" class="btn btn-danger">Revenir à la liste des articles</a>
                   </form>
-                
             </div>
         </div>
     </div>
